@@ -13,3 +13,4 @@ reflections/
 *~
 .vscode/
 .idea/
+.claude/worktrees/
