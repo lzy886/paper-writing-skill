@@ -268,9 +268,12 @@ grep -rn '\\cite{' *.tex | grep -v '%' # list all citations for cross-check
 
 **3. Embedded fonts.** Verify all fonts are embedded. Non-embedded fonts cause rendering differences across machines and are rejected by some submission systems.
 ```bash
-pdffonts paper.pdf | grep -v "yes"
+# $(NF-4) counts from the end: the type column holds one or two words, so fixed column numbers shift.
+pdffonts paper.pdf | awk 'NR>2 { if ($(NF-4)!="yes") print "NOT EMBEDDED: " $0; if ($0 ~ /Type +3/) print "TYPE 3 (venue reject): " $0 }'
 ```
 If any font shows `no` in the `emb` column, flag it and suggest adding `\usepackage[T1]{fontenc}` or compiling with `GS_OPTIONS=-dPDFSETTINGS=/prepress`.
+
+**Type 3 fonts carry `emb yes`, so an `emb`-only check passes them.** IEEE and ACM reject Type 3, and their missing Unicode map leaves PDF text uncopyable and unsearchable. Inspect the `type` column as well. Matplotlib emits Type 3 by default. Set `pdf.fonttype = 42` and `ps.fonttype = 42` before saving a figure, which `/viz`'s `matplotlib_defaults.py` now does.
 
 **4. Figure quality.** Check that all included figure files are vector format (PDF/EPS) or high-resolution raster. List all figures referenced in the source and verify they exist.
 ```bash
@@ -303,7 +306,7 @@ grep -rn '\\label{' *.tex | sort | uniq -d  # duplicate labels
 |-------|--------|---------|
 | Page count | ✓ or ✗ | N pages (limit: M) |
 | Broken refs | ✓ or ✗ | List of undefined refs |
-| Embedded fonts | ✓ or ✗ | List of non-embedded fonts |
+| Embedded fonts | ✓ or ✗ | List of non-embedded or Type 3 fonts |
 | Figure quality | ✓ or ✗ | List of raster figures |
 | Anonymization | ✓ or ✗ | List of leaks found |
 | Column balance | ✓ or ✗ | Package present/missing |
