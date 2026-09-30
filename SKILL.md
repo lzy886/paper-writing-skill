@@ -37,7 +37,7 @@ The three skills create a closed loop: the literature survey reveals the gap and
 ### When This Skill Triggers, Claude MUST:
 
 1. Read this SKILL.md (already loaded)
-2. Read ALL files in `author_profile/` — these are the source of truth for editorial rules
+2. Read ALL files in `author_profile/` except the `*.zh-CN.md` translations — these are the source of truth for editorial rules
 3. Ask which paper the user is working on
 4. Look for a `project_context.md` in the paper's working directory
 5. If found, read it and treat it as binding constraints
