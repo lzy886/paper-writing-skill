@@ -43,7 +43,7 @@
 | `brainstorming_guide.md` | `brainstorming_guide.zh-CN.md` | ✅ 完成 |
 | `figure_synthesis_guide.md` + `figure_templates/` | — | ⬜ 待译 |
 | `red_team_protocol.md` | — | ⬜ 待译 |
-| `loop_mode.md` | — | ⬜ 待译 |
+| `loop_mode.md` | `loop_mode.zh-CN.md` | ✅ 完成 |
 
 **`author_profile/` 已全部完成**——那是每次调用 skill 都会载入的部分（约 1020 行），既占上下文开销的大头，也装着全部实际执行的规则。
 
