@@ -40,7 +40,7 @@
 | `author_profile/intervention_types.md` | `author_profile/intervention_types.zh-CN.md` | ✅ 完成 |
 | `writing_checklists/`（4 份） | — | ⬜ 待译 |
 | `section_rhetorical_moves/`（4 份） | — | ⬜ 待译 |
-| `brainstorming_guide.md` | — | ⬜ 待译 |
+| `brainstorming_guide.md` | `brainstorming_guide.zh-CN.md` | ✅ 完成 |
 | `figure_synthesis_guide.md` + `figure_templates/` | — | ⬜ 待译 |
 | `red_team_protocol.md` | — | ⬜ 待译 |
 | `loop_mode.md` | — | ⬜ 待译 |
